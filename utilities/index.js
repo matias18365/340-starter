@@ -24,8 +24,6 @@ Util.getNav = async function (req, res, next) {
     return list
 }
 
-module.exports = Util
-
 /* **************************************
 * Build the classification view HTML
 * ************************************ */
@@ -58,3 +56,38 @@ Util.buildClassificationGrid = async function(data){
     }
     return grid
 }
+
+/* **************************************
+ * Build the vehicle detail view HTML
+ * ************************************ */
+Util.buildVehicleDetail = async function(vehicle){
+    const formattedPrice = vehicle.inv_price.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: 0,
+    });
+    const formattedMileage = vehicle.inv_miles.toLocaleString("en-US");
+    let html = `
+        <div class="detail-wrapper">
+            <section class="detail-image-section">
+                <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} ${vehicle.inv_year}" class="full-size-image">
+            </section>
+            <section class="detail-info-section">
+                <h2 class="detail-heading">${vehicle.inv_make} ${vehicle.inv_model} - ${vehicle.inv_year}</h2>
+                <div class="price-box">
+                    <span class="price-label">Price:</span>
+                    <span class="prominent-price">${formattedPrice}</span>
+                </div>
+                <ul class="detail-list">
+                    <li><span class="detail-label">Description:</span> ${vehicle.inv_description}</li>
+                    <li><span class="detail-label">Mileage:</span> ${formattedMileage}</li>
+                    <li><span class="detail-label">Color:</span> ${vehicle.inv_color}</li>
+                    <li><span class="detail-label">Year:</span> ${vehicle.inv_year}</li>
+                    </ul>
+            </section>
+        </div>
+    `;
+    return html;
+}
+
+module.exports = Util

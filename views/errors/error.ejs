@@ -1,0 +1,11 @@
+<h1><%- title %></h1>
+
+<p class="text-xl mt-4">Oh no! Looks like there was a server error.</p>
+<p class="text-lg">Please try again later or contact support if the issue persists.</p>
+
+<% if (message && process.env.NODE_ENV !== 'production') { %>
+    <details class="mt-4 p-4 border border-red-300 bg-red-50 rounded-lg">
+        <summary class="font-bold cursor-pointer">Error Details</summary>
+        <p class="mt-2 text-sm text-red-700"><%- message %></p>
+    </details>
+<% } %>

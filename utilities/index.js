@@ -90,4 +90,36 @@ Util.buildVehicleDetail = async function(vehicle){
     return html;
 }
 
+/* ****************************************
+* Middleware for handling errors
+* *************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+/* ****************************************
+ * Generates an HTML <select> list of classifications 
+ * Utilizada para las vistas Add Inventory y Edit Inventory
+ * *************************************** */
+Util.buildClassificationList = async function (classification_id = null) {
+    let data = await invModel.getClassifications() // Asume que esta función existe en el modelo
+    let classificationList =
+    '<select name="classification_id" id="classificationList" required>'
+    classificationList += "<option value=''>Choose a Classification</option>"
+    data.rows.forEach((row) => {
+    classificationList += '<option value="' + row.classification_id + '"'
+    if (
+        classification_id != null &&
+        row.classification_id == row.classification_id
+        // Nota: El código proporcionado en las instrucciones tenía un error lógico:
+        // row.classification_id == classification_id.
+        // Lo estoy corrigiendo para que use la variable que se pasa.
+
+        ) {
+            classificationList += " selected "
+        }
+        classificationList += ">" + row.classification_name + "</option>"
+    })
+    classificationList += "</select>"
+    return classificationList
+    }
+
 module.exports = Util

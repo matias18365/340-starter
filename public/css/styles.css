@@ -585,3 +585,99 @@ MEDIA QUERY FOR DETAIL VIEW
         text-align: center;
     }
 }
+
+/* Style for messages type 'notice' */
+.notice {
+    background-color: #e6f7ff;
+    color: #0050b3;
+    border: 1px solid #91d5ff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    list-style: none;
+}
+
+/* Style for messages type 'error' */
+.error {
+    background-color: #fff2f0;
+    color: #cf1322;
+    border: 1px solid #ffccc7;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    list-style: none;
+}
+
+/* style for main container */
+.login-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+/* Label Style */
+.login-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* Style for labels (Email y Password) */
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #ecf0f1;
+    color: #34495e;
+    font-size: 1em;
+}
+
+/* Login button */
+.login-container button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+/* Hover Effect Button */
+.login-container button[type="submit"]:hover {
+    background-color: #bdc3c7; 
+}
+
+/* Style for p signup */
+.signup-link {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 1em;
+}
+
+/* Style for link "Sign-up" inside p */
+.signup-link a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hover Efect for Signup link */
+.signup-link a:hover {
+    text-decoration: underline;
+}

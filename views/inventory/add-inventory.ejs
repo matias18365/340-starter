@@ -1,0 +1,125 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+<% } %>
+
+<%- messages() %>
+
+<form id="addInventoryForm" action="/inv/add-inventory" method="post">
+
+    <div class="form-group">
+        <label for="classificationList">Classification:</label>
+        <%- classificationList %> 
+    </div>
+
+    <div class="form-group">
+        <label for="invMake">Make (Example: Chevrolet):</label>
+        <input 
+            type="text" 
+            id="invMake" 
+            name="inv_make" 
+            required
+            placeholder="Enter vehicle make"
+            value="<%= locals.inv_make %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invModel">Model (Example: Camaro):</label>
+        <input 
+            type="text" 
+            id="invModel" 
+            name="inv_model" 
+            required
+            placeholder="Enter vehicle model"
+            value="<%= locals.inv_model %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invDescription">Description:</label>
+        <textarea 
+            id="invDescription" 
+            name="inv_description" 
+            required
+            placeholder="Describe the vehicle"
+        ><%= locals.inv_description %></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="invImage">Image Path (e.g., /images/vehicles/no-image.png):</label>
+        <input 
+            type="text" 
+            id="invImage" 
+            name="inv_image" 
+            required
+            value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invThumbnail">Thumbnail Path (e.g., /images/vehicles/no-image-tn.png):</label>
+        <input 
+            type="text" 
+            id="invThumbnail" 
+            name="inv_thumbnail" 
+            required
+            value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invPrice">Price (Digits only, can be decimal):</label>
+        <input 
+            type="number" 
+            id="invPrice" 
+            name="inv_price" 
+            required
+            placeholder="Enter vehicle price"
+            min="0"
+            step="any"
+            value="<%= locals.inv_price %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invYear">Year (4 Digits):</label>
+        <input 
+            type="number" 
+            id="invYear" 
+            name="inv_year" 
+            required
+            pattern="^\d{4}$" 
+            title="Year must be a four-digit number."
+            placeholder="YYYY"
+            value="<%= locals.inv_year %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invMiles">Miles (Digits only, no commas):</label>
+        <input 
+            type="number" 
+            id="invMiles" 
+            name="inv_miles" 
+            required
+            pattern="^\d+$" 
+            title="Miles must be digits only."
+            placeholder="Enter mileage"
+            value="<%= locals.inv_miles %>"
+        >
+    </div>
+
+    <div class="form-group">
+        <label for="invColor">Color:</label>
+        <input 
+            type="text" 
+            id="invColor" 
+            name="inv_color" 
+            required
+            placeholder="Enter vehicle color"
+            value="<%= locals.inv_color %>"
+        >
+    </div>
+
+    <button type="submit">Add Vehicle</button>
+</form>
